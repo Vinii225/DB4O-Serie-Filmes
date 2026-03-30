@@ -24,6 +24,12 @@ public class Serie {
 	public int getAno() {
 		return ano;
 	}
+	public List<Episodio> getEpisodios() {
+	    return episodios;
+	}
+	public List<Genero> getGenero() {
+	    return generos;
+	}
 	
 
 	public void setNome(String nome) {
@@ -44,6 +50,6 @@ public class Serie {
 	
 	@Override
 	public String toString() {
-		return "ID: " + id + " - " + nome + " (" + ano + ")" + "Episódios: " + episodios + " / " + generos; 
+		return "ID: " + id + " - " + nome + " (" + ano + ")" + " Episódios: " + episodios + " / " + generos; 
 	}
 }
