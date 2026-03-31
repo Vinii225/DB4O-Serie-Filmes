@@ -25,6 +25,9 @@ public class Cadastrar {
 		
 		serie.adcGenero(genero);
 		serie.adcEpisodio(episodio);
+		serie.adcEpisodio(new Episodio("Cat's in the Bag..."));
+		serie.adcEpisodio(new Episodio("...And the Bag's in the River"));
+		serie.adcEpisodio(new Episodio("Cancer Man"));
 		genero.adcSerie(serie);
 
 		existe = manager.queryByExample(new Serie("Breaking Bad", 2008));
@@ -41,6 +44,8 @@ public class Cadastrar {
 		
 		serie.adcGenero(genero);
 		serie.adcEpisodio(episodio);
+		serie.adcEpisodio(new Episodio("A estranha na Maple Street"));
+		serie.adcEpisodio(new Episodio("A pulga e o acrobata"));
 		genero.adcSerie(serie);
 
 		existe = manager.queryByExample(new Serie("Stranger Things", 2016));
@@ -59,6 +64,7 @@ public class Cadastrar {
 		
 		serie.adcGenero(genero);
 		serie.adcEpisodio(episodio);
+		serie.adcEpisodio(new Episodio("Diversity Day"));
 		genero.adcSerie(serie);
 
 		existe = manager.queryByExample(new Serie("The Office", 2005));
@@ -75,6 +81,8 @@ public class Cadastrar {
 		
 		serie.adcGenero(genero);
 		serie.adcEpisodio(episodio);
+		serie.adcEpisodio(new Episodio("The Tagger"));
+		serie.adcEpisodio(new Episodio("The Slump"));
 		genero.adcSerie(serie);
 
 		existe = manager.queryByExample(new Serie("Brooklyn Nine-Nine", 2013));
