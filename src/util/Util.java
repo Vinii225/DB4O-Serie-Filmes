@@ -66,6 +66,7 @@ public class Util {
 	private static void configurarCascata(com.db4o.config.CommonConfiguration config) {
 		config.objectClass(Serie.class).cascadeOnUpdate(true);
 		config.objectClass(Serie.class).cascadeOnActivate(true);
+		config.objectClass(Serie.class).cascadeOnDelete(true);
 		
 		config.objectClass(Genero.class).cascadeOnUpdate(true);
 		config.objectClass(Genero.class).cascadeOnActivate(true);
