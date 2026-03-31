@@ -26,7 +26,6 @@ public class Alterar {
 			if (!ser.getGenero().isEmpty()) {
 				Genero gen = ser.getGenero().get(0);
 
-				// remove o relacionamento nos dois lados
 				ser.getGenero().remove(gen);
 				gen.getSeries().remove(ser);
 

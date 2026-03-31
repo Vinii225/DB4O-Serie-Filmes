@@ -18,12 +18,12 @@ public class Consultar {
 
         int X = 2011;
         String generoX = "Drama";
-        int N = 0;
+        int N = 2;
 
         Query q;
         List<Serie> resultados;
 
-        System.out.println("\nConsulta 1: Séries do ano X = " + X);
+        System.out.println("\nConsulta 1: Séries do ano " + X);
 
         q = manager.query();
         q.constrain(Serie.class);
@@ -35,7 +35,7 @@ public class Consultar {
             System.out.println(s);
         }
 
-        System.out.println("\nConsulta 2: Séries do gênero de nome X = " + generoX);
+        System.out.println("\nConsulta 2: Séries do gênero de nome " + generoX);
 
         q = manager.query();
         q.constrain(Serie.class);
@@ -47,7 +47,7 @@ public class Consultar {
             System.out.println(s);
         }
 
-        System.out.println("\nConsulta 3: Séries com mais de N episódios, N = " + N);
+        System.out.println("\nConsulta 3: Séries com mais de " + N + " episódios");
 
         q = manager.query();
         q.constrain(Serie.class);
