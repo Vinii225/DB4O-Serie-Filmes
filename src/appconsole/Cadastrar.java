@@ -1,6 +1,7 @@
 package appconsole;
 
 import com.db4o.ObjectContainer;
+import com.db4o.ObjectSet;
 import util.Util;
 import modelo.Serie;
 import modelo.Genero;
@@ -11,6 +12,7 @@ public class Cadastrar {
 	public Cadastrar() {
 		Util.conectar();
 		ObjectContainer manager = Util.getManager();
+		ObjectSet<Serie> existe;
 		
 		System.out.println("Começo do cadastro");
 		Serie serie;
@@ -24,9 +26,12 @@ public class Cadastrar {
 		serie.adcGenero(genero);
 		serie.adcEpisodio(episodio);
 		genero.adcSerie(serie);
-		
-		manager.store(serie);
-		manager.commit();
+
+		existe = manager.queryByExample(new Serie("Breaking Bad", 2008));
+		if (existe.isEmpty()) {
+			manager.store(serie);
+			manager.commit();
+		}
 		
 		
 		
@@ -37,9 +42,14 @@ public class Cadastrar {
 		serie.adcGenero(genero);
 		serie.adcEpisodio(episodio);
 		genero.adcSerie(serie);
-		
-		manager.store(serie);
-		manager.commit();
+
+		existe = manager.queryByExample(new Serie("Stranger Things", 2016));
+		if (existe.isEmpty()) {
+			manager.store(serie);
+			manager.commit();
+		}
+
+
 		
 		
 		
@@ -50,9 +60,12 @@ public class Cadastrar {
 		serie.adcGenero(genero);
 		serie.adcEpisodio(episodio);
 		genero.adcSerie(serie);
-		
-		manager.store(serie);
-		manager.commit();
+
+		existe = manager.queryByExample(new Serie("The Office", 2005));
+		if (existe.isEmpty()) {
+			manager.store(serie);
+			manager.commit();
+		}
 		
 		
 		
@@ -63,9 +76,12 @@ public class Cadastrar {
 		serie.adcGenero(genero);
 		serie.adcEpisodio(episodio);
 		genero.adcSerie(serie);
-		
-		manager.store(serie);
-		manager.commit();
+
+		existe = manager.queryByExample(new Serie("Brooklyn Nine-Nine", 2013));
+		if (existe.isEmpty()) {
+			manager.store(serie);
+			manager.commit();
+		}
 		
 		
 		
@@ -76,9 +92,12 @@ public class Cadastrar {
 		serie.adcGenero(genero);
 		serie.adcEpisodio(episodio);
 		genero.adcSerie(serie);
-		
-		manager.store(serie);
-		manager.commit();
+
+		existe = manager.queryByExample(new Serie("Teen Wolf", 2011));
+		if (existe.isEmpty()) {
+			manager.store(serie);
+			manager.commit();
+		}
 		
 		
 		Util.desconectar();
