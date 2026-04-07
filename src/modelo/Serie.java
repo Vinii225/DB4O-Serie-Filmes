@@ -27,8 +27,11 @@ public class Serie {
 	public List<Episodio> getEpisodios() {
 	    return episodios;
 	}
-	public List<Genero> getGenero() {
+	public List<Genero> getGeneros() {
 	    return generos;
+	}
+	public List<Genero> getGenero() {
+	    return getGeneros();
 	}
 	
 
@@ -40,16 +43,29 @@ public class Serie {
 	}
 	
 	
-	public void adcEpisodio(Episodio ep) {
+	public void addEpisodio(Episodio ep) {
 		this.episodios.add(ep);
 	}
-	public void adcGenero(Genero gen) {
+
+	public void addGenero(Genero gen) {
 		this.generos.add(gen);
+	}
+
+	private String listarGeneros() {
+		String texto = "";
+		for (int i = 0; i < generos.size(); i++) {
+			Genero genero = generos.get(i);
+			if (i > 0) {
+				texto += ", ";
+			}
+			texto += genero.getNome();
+		}
+		return texto;
 	}
 	
 	
 	@Override
 	public String toString() {
-		return "ID: " + id + " - " + nome + " (" + ano + ")" + " Episódios: " + episodios + " / " + generos; 
+		return "ID: " + id + " - " + nome + " (" + ano + ")" + " Episódios: " + episodios + " / Gêneros: [" + listarGeneros() + "]"; 
 	}
 }

@@ -1,7 +1,6 @@
 package appconsole;
 
 import com.db4o.ObjectContainer;
-import com.db4o.ObjectSet;
 import util.Util;
 import modelo.Serie;
 import modelo.Genero;
@@ -12,100 +11,92 @@ public class Cadastrar {
 	public Cadastrar() {
 		Util.conectar();
 		ObjectContainer manager = Util.getManager();
-		ObjectSet<Serie> existe;
 		
 		System.out.println("Começo do cadastro");
 		Serie serie;
 		Episodio episodio;
-		Genero genero;
+		Genero generoDrama = new Genero("Drama");
+		Genero generoSciFi = new Genero("Sci-Fi");
+		Genero generoSitcom = new Genero("Sitcom");
 		
-		genero = new Genero("Drama");
 		serie = new Serie("Breaking Bad", 2008);
 		episodio = new Episodio("Piloto");
 		
-		serie.adcGenero(genero);
-		serie.adcEpisodio(episodio);
-		serie.adcEpisodio(new Episodio("Cat's in the Bag..."));
-		serie.adcEpisodio(new Episodio("...And the Bag's in the River"));
-		serie.adcEpisodio(new Episodio("Cancer Man"));
-		genero.adcSerie(serie);
+		serie.addGenero(generoDrama);
+		serie.addEpisodio(episodio);
+		serie.addEpisodio(new Episodio("Cat's in the Bag..."));
+		serie.addEpisodio(new Episodio("...And the Bag's in the River"));
+		serie.addEpisodio(new Episodio("Cancer Man"));
+		generoDrama.addSerie(serie);
 
-		existe = manager.queryByExample(new Serie("Breaking Bad", 2008));
-		if (existe.isEmpty()) {
-			manager.store(serie);
-			manager.commit();
-		}
+		manager.store(serie);
+		manager.store(generoDrama);
+		manager.commit();
 		
 		
 		
-		genero = new Genero("Sci-Fi");
 		serie = new Serie("Stranger Things", 2016);
 		episodio = new Episodio("O desaparecimento de Will Byers");
 		
-		serie.adcGenero(genero);
-		serie.adcEpisodio(episodio);
-		serie.adcEpisodio(new Episodio("A estranha na Maple Street"));
-		serie.adcEpisodio(new Episodio("A pulga e o acrobata"));
-		genero.adcSerie(serie);
+		serie.addGenero(generoSciFi);
+		serie.addGenero(generoDrama);
+		serie.addEpisodio(episodio);
+		serie.addEpisodio(new Episodio("A estranha na Maple Street"));
+		serie.addEpisodio(new Episodio("A pulga e o acrobata"));
+		generoSciFi.addSerie(serie);
+		generoDrama.addSerie(serie);
 
-		existe = manager.queryByExample(new Serie("Stranger Things", 2016));
-		if (existe.isEmpty()) {
-			manager.store(serie);
-			manager.commit();
-		}
+		manager.store(serie);
+		manager.store(generoSciFi);
+		manager.store(generoDrama);
+		manager.commit();
 
 
 		
 		
 		
-		genero = new Genero("Sitcom");
 		serie = new Serie("The Office", 2005);
 		episodio = new Episodio("Pilot");
 		
-		serie.adcGenero(genero);
-		serie.adcEpisodio(episodio);
-		serie.adcEpisodio(new Episodio("Diversity Day"));
-		genero.adcSerie(serie);
+		serie.addGenero(generoSitcom);
+		serie.addEpisodio(episodio);
+		serie.addEpisodio(new Episodio("Diversity Day"));
+		generoSitcom.addSerie(serie);
 
-		existe = manager.queryByExample(new Serie("The Office", 2005));
-		if (existe.isEmpty()) {
-			manager.store(serie);
-			manager.commit();
-		}
+		manager.store(serie);
+		manager.store(generoSitcom);
+		manager.commit();
 		
 		
 		
-		genero = new Genero("Sitcom");
 		serie = new Serie("Brooklyn Nine-Nine", 2013);
 		episodio = new Episodio("Piloto");
 		
-		serie.adcGenero(genero);
-		serie.adcEpisodio(episodio);
-		serie.adcEpisodio(new Episodio("The Tagger"));
-		serie.adcEpisodio(new Episodio("The Slump"));
-		genero.adcSerie(serie);
+		serie.addGenero(generoSitcom);
+		serie.addEpisodio(episodio);
+		serie.addEpisodio(new Episodio("The Tagger"));
+		serie.addEpisodio(new Episodio("The Slump"));
+		generoSitcom.addSerie(serie);
 
-		existe = manager.queryByExample(new Serie("Brooklyn Nine-Nine", 2013));
-		if (existe.isEmpty()) {
-			manager.store(serie);
-			manager.commit();
-		}
+		manager.store(serie);
+		manager.store(generoSitcom);
+		manager.commit();
 		
 		
 		
-		genero = new Genero("Drama");
 		serie = new Serie("Teen Wolf", 2011);
 		episodio = new Episodio("A lua do lobo");
 		
-		serie.adcGenero(genero);
-		serie.adcEpisodio(episodio);
-		genero.adcSerie(serie);
+		serie.addGenero(generoDrama);
+		serie.addGenero(generoSciFi);
+		serie.addEpisodio(episodio);
+		generoDrama.addSerie(serie);
+		generoSciFi.addSerie(serie);
 
-		existe = manager.queryByExample(new Serie("Teen Wolf", 2011));
-		if (existe.isEmpty()) {
-			manager.store(serie);
-			manager.commit();
-		}
+		manager.store(serie);
+		manager.store(generoDrama);
+		manager.store(generoSciFi);
+		manager.commit();
 		
 		
 		Util.desconectar();

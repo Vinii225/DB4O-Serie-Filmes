@@ -25,12 +25,24 @@ public class Genero {
 		this.nome = nome;
 	}
 	
-	public void adcSerie(Serie serie) {
+	public void addSerie(Serie serie) {
 		this.series.add(serie);
+	}
+
+	private String listarSeries() {
+		String texto = "";
+		for (int i = 0; i < series.size(); i++) {
+			Serie serie = series.get(i);
+			if (i > 0) {
+				texto += ", ";
+			}
+			texto += serie.getNome() + " (" + serie.getAno() + ")";
+		}
+		return texto;
 	}
 	
 	@Override
 	public String toString() {
-		return "Gênero: " + nome;
+		return "Gênero: " + nome + " - Séries: [" + listarSeries() + "]";
 	}
 }

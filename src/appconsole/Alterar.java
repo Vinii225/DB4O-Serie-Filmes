@@ -21,20 +21,20 @@ public class Alterar {
 		List<Serie> resultados = q.execute();
 		
 		if(resultados.size() > 0){
-			Serie ser = resultados.getFirst();
+			Serie serie = resultados.getFirst();
 
-			if (!ser.getGenero().isEmpty()) {
-				Genero gen = ser.getGenero().get(0);
+			if (!serie.getGeneros().isEmpty()) {
+				Genero genero = serie.getGeneros().get(0);
 
-				ser.getGenero().remove(gen);
-				gen.getSeries().remove(ser);
+				serie.getGeneros().remove(genero);
+				genero.getSeries().remove(serie);
 
-				manager.store(ser);
-				manager.store(gen);
+				manager.store(serie);
+				manager.store(genero);
 				manager.commit();
 
 				System.out.println("Relacionamento Serie-Genero removido com sucesso");
-				System.out.println(ser);
+				System.out.println(serie);
 			}
 			else {
 				System.out.println("A serie nao possui genero para remover relacionamento");
